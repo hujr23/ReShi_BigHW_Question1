@@ -1,0 +1,449 @@
+
+\documentclass[12pt,a4paper]{article}% 文档格式
+\usepackage{ctex,hyperref}% 输出汉字
+\usepackage{times}% 英文使用Times New Roman
+
+\title{\fontsize{18pt}{27pt}\selectfont% 小四字号，1.5倍行距
+	{\heiti% 黑体 
+		关于热湿交换大作业的说明}}% 题目
+
+\author{\fontsize{12pt}{18pt}\selectfont% 小四字号，1.5倍行距
+	{\fangsong% 仿宋
+		Jiarui Hu}\\% 标题栏脚注
+	\fontsize{10.5pt}{15.75pt}\selectfont% 五号字号，1.5倍行距
+	{\fangsong% 仿宋
+		(清华大学未央书院)}}% 作者单位，“~”表示空格
+
+\date{\today}% 日期（这里避免生成日期）
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,amscd}% 为公式输入创造条件的宏包
+
+\usepackage{graphicx}% 图片插入宏包
+\usepackage{subfigure}% 并排子图
+\usepackage{float}% 浮动环境，用于调整图片位置
+\usepackage[export]{adjustbox}% 防止过宽的图片
+
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{subfigure}
+\usepackage{subcaption}
+
+\usepackage{tikz}
+\usepackage[numbers]{natbib}
+\usepackage{abstract}% 两栏文档，一栏摘要及关键字宏包
+\renewcommand{\abstracttextfont}{\fangsong}% 摘要内容字体为仿宋
+\renewcommand{\abstractname}{\textbf{摘\quad 要}}% 更改摘要二字的样式
+
+\usepackage{xcolor}% 字体颜色宏包
+\newcommand{\red}[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
+\newcommand{\blue}[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
+\newcommand{\green}[1]{\textcolor[rgb]{0.00,1.00,0.00}{#1}}
+\newcommand{\darkblue}[1]
+{\textcolor[rgb]{0.00,0.00,0.50}{#1}}
+\newcommand{\darkgreen}[1]
+{\textcolor[rgb]{0.00,0.37,0.00}{#1}}
+\newcommand{\darkred}[1]{\textcolor[rgb]{0.60,0.00,0.00}{#1}}
+\newcommand{\brown}[1]{\textcolor[rgb]{0.50,0.30,0.00}{#1}}
+\newcommand{\purple}[1]{\textcolor[rgb]{0.50,0.00,0.50}{#1}}% 为使用方便而编辑的新指令
+
+\usepackage{url}% 超链接
+\usepackage{bm}% 加粗部分公式
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{longtable}% 长表格
+\usepackage{supertabular}% 跨页表格
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{changepage}% 换页
+
+\usepackage{esint}%多重积分宏包
+\usepackage{unicode-math}
+
+\usepackage{enumerate}% 短编号
+\usepackage{caption}% 设置标题
+\captionsetup[figure]{name=\fontsize{10pt}{15pt}\selectfont Figure}% 设置图片编号头
+\captionsetup[table]{name=\fontsize{10pt}{15pt}\selectfont Table}% 设置表格编号头
+
+\usepackage{indentfirst}% 中文首行缩进
+\usepackage[left=2.50cm,right=2.50cm,top=2.80cm,bottom=2.50cm]{geometry}% 页边距设置
+\renewcommand{\baselinestretch}{1.5}% 定义行间距（1.5）
+
+\usepackage{fancyhdr} %设置全文页眉、页脚的格式
+\pagestyle{fancy}
+\hypersetup{colorlinks=true,linkcolor=black}% 去除引用红框，改变颜色
+\usepackage{makecell}
+
+
+\usepackage{bibentry}
+\usepackage{natbib}
+
+
+\usepackage{amsmath}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\setlength{\belowcaptionskip}{1cm} %调整图片标题与下文距离
+
+
+\begin{document}% 以下为正文内容
+\setcounter{section}{-1}
+	\maketitle% 产生标题，没有它无法显示标题
+
+	\lhead{}% 页眉左边设为空
+	\chead{}% 页眉中间设为空
+	\rhead{}% 页眉右边设为空
+	\lfoot{}% 页脚左边设为空
+	\cfoot{\thepage}% 页脚中间显示页码
+	\rfoot{}% 页脚右边设为空
+
+\newpage
+\section{参数定义及说明}
+
+\begin{table}[htbp]
+\centering
+\caption{MATLAB中各参数定义及其含义-1}
+\begin{tabular}{cll}
+\toprule
+参数 & 含义 & 单位\\
+\midrule
+$T_{a}$ & 环境温度 & 28$^{\circ}$C \\
+$RH$ & 环境相对湿度 & 85\% \\
+$\rho_{air}$ & 空气密度 & 1.18 kg/m$^{3}$ \\
+$\mu_{air}$ & 空气动力粘度 & 1.85$\times10^{-5}$ kg/(m·s) \\
+$\sigma$ &空气与水滴表面的张力系数 & 0.072 N/m \\
+$C_{p,air}$ & 空气比热容 & 1005 J/(kg·K) \\
+$C_d$&气流拖拽系数&0.0063\\
+$k_a$ &空气热导率&0.0253 W/(m·K)\\
+$k_w$ &水的热导率&0.606 W/(m·K)\\
+$D_{aw}$ &空气中水蒸气扩散系数&2.6$\times10^{-5}$ m$^{2}$/s\\
+$M_{w}$ &水的摩尔质量&18.01528$\times10^{-3}$ kg/mol\\
+$D_0$ &水滴初始直径&0.1 mm\\
+$R_0$ &水滴初始半径&0.05 mm\\
+$R_{gas}$ &通用气体常数&8.314 J/(mol·K)\\
+$T_{sur}$ & 翅片表面温度&$^{\circ}$C\\
+$\rho_w$ &水的密度&997 kg/m$^{3}$\\
+$g$&重力加速度&9.81 m/s$^{2}$\\
+$P$ &环境大气压&101325 Pa\\
+$P_{s}$ &环境中水蒸气分压 & 3214Pa \\
+$P_{sat}$ &水滴表面饱和水蒸气压 &Pa\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\caption{MATLAB中各参数定义及其含义-2}
+\begin{tabular}{cll}
+\toprule
+参数 & 含义 & 单位\\
+\midrule
+$C_{p,w}$ &水的比热容&4186 J/(kg·K)\\
+$u$&空气来流速度&m/s\\
+$t$ &时间&s\\
+$X_w$ &水滴表面水蒸气的摩尔分数&-\\
+$T_w$ &水滴温度&$^{\circ}$C\\
+$D_w$ &水滴直径&m\\
+$R_w$ &水滴半径&m\\
+$h_{fg}$ &水的汽化潜热&J/kg\\
+$h_c$ &水滴表面对流传热系数&W/(m$^{2}$·K)\\
+$h_m$ &水滴表面对流传质系数&m/s\\
+$\theta$ &接触角& rad\\
+$L$ &水滴湿润长度&m\\
+$R_c$ &接触半径&m\\
+$A$ &水滴表面积&m$^{2}$\\
+$A_p$ &水滴在流动方向的投影面积&m$^{2}$\\
+$F_{\sigma}$ &表面张力&W\\
+$F_d$ &气流拖拽力&W\\
+$F_g$ &重力&W\\
+$V$&水滴体积&m$^{3}$\\
+$N_w$ &水的摩尔流量&mol/s\\
+$q$ &单位面积上的传热通量&W/m$^{2}$\\
+$Re$ &雷诺数&-\\
+$Pr$ &普朗特数&0.707\\
+$Sc$ &施密特数&-\\
+$Nu$ &努塞尔数&-\\
+$Sh$ &舍伍德数&-\\
+$We$ &韦伯数&-\\
+$r_{sl}$ &水滴与翅片导热热阻&K/W\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\newpage
+
+\section{ODE函数的创建：变量关联}
+
+\subsection{课件中给出的公式}
+\noindent 表面张力：
+\begin{equation}
+F_{\sigma}=\sigma L \sin\theta
+\end{equation}
+气流拖拽力：
+\begin{equation}
+F_{d}=\frac{1}{2}C_{d}\rho_{air} A_{p} u^{2}
+\end{equation}
+接触角为$\theta$的球形帽状水滴体积：
+\begin{equation}
+V=\frac{\pi R^{3}}{3}(2-3\cos\theta+\cos^{3}\theta)
+\end{equation}
+其表面积$A$和在投影方向的面积$A_{p}$分别为：
+\begin{equation}
+A=2\pi R^{2}(1-\cos\theta)
+\end{equation}
+\begin{equation}
+A_{p}=\pi R^{2}\sin^{2}\theta
+\end{equation}
+接触半径$R_c$与曲率半径的关系为：
+\begin{equation}
+R_{c}=R\sin\theta
+\end{equation}
+湿润长度$L$与接触半径的关系为：
+\begin{equation}
+L=2R\sin\theta 
+\end{equation}
+
+\subsection{无量纲参量}
+
+对于水滴，其毕渥数$Bi$定义为：
+\begin{equation}
+Bi=\frac{h_{c} R}{k_{w}}
+\end{equation}
+其中$k_{w}$为水的导热系数。集总参数的应用条件为$Bi<0.1$，所以水滴在这个模型中可以认为是温度均匀的。
+
+
+水滴表面水蒸气的浓度梯度是水蒸气扩散的主要动力，水滴表面的水蒸气浓度视为在此温度下的饱和水蒸气浓度。水滴表面的水
+蒸气浓度摩尔通量计算如下：
+\begin{equation}\label{eq:Nw}
+	N_w=h_m (\frac{P_{sat}(T_w)}{R_{gas} T_w}-X_w\frac{P_{s}}{R_{gas} T_{a}})
+\end{equation}
+根据ASHRAE手册，饱和水蒸气压$P_{sat}$可由下式计算\footnote{ASHRAE. 2013 ASHRAE Handbook Fundamentals SI Edition [M].}：
+\begin{equation}
+\ln	P_{sat}(T_w)= c_1 T_w^{-1}+c_2 + c_3 T_w + c_4 T_w^{2} + c_5 T_w^{3} + c_6 \ln T_w
+\end{equation}
+其中各常数值为：
+\begin{align*}
+c_1 &=-5.8002206\times10^{3},\\
+c_2 &=1.3914993\times10^{0},\\
+c_3 &=-4.8640239\times10^{-2},\\
+c_4 &=4.1764768\times10^{-5},\\
+c_5 &=-1.4452093\times10^{-8},\\
+c_6 &=6.5459673\times10^{0}.
+\end{align*}
+
+
+水滴质量在微元时间内变化可以表示为：
+\begin{equation}\label{eq:dmw}
+	m_w(t+\Delta t)=m_w(t)-N_w A_p M_w \Delta t
+\end{equation}
+水滴的温度变化可表示为：
+\begin{equation}\label{eq:dTw}
+	m_w C_{p,w} \frac{\mathrm{d}T_w}{\mathrm{d}t}=[h_c A (T_{a}-T_w)+\pi R_c^2 (T_{sur}-T_w)/r_{sl}]-\frac{\mathrm{d} m_w}{\mathrm{d} t} h_{fg}
+\end{equation}
+其中：
+\begin{equation}
+	h_{fg}=2500+1.84 T_w -4.19 T_w = 2500 -2.35 T_w \quad (kJ/kg)
+\end{equation}
+热阻$r_{sl}$取：
+\begin{equation}
+	r_{sl}=\frac{\delta_{eff}}{k_w \pi R_c^2}
+\end{equation}
+其中$\delta_{eff}$为等效液膜厚度，取$10^{-5}m$。
+式\ref{eq:Nw}中的对流传质系数$h_m$可以通过宣乌特准则数计算关联式得到。表达式如
+下：
+\begin{equation}\label{eq:Sh}
+	Sh=\frac{h_m D_w}{D_{aw}}=2+0.6 Re^{1/2} Sc^{1/3}
+\end{equation}
+
+施密特准则数Sc定义如下：
+\begin{equation}
+	Sc=\frac{C_{p,air} \mu_{air}}{k_a}
+\end{equation}
+式\ref{eq:dTw}中的对流传热系数$h_c$可以通过计算努谢尔特关联式得到，计算表达式如下：
+\begin{equation}\label{eq:Nu}
+	Nu =\frac{h_c D_w}{k_a}=2+0.6 Re^{1/2} Pr^{1/3}
+\end{equation}
+式\ref{eq:Nu}和式\ref{eq:Sh}中的雷诺数$Re$定义如下：
+\begin{equation}
+	Re=\frac{\rho_{air} u D_w}{\mu_{air}}
+\end{equation}
+关于韦伯数$We$，其定义如下：
+\begin{equation}
+	We=\frac{\rho_{air} u^{2} D_w}{2\sigma}
+\end{equation}
+\subsection{接触角理论}
+本部分中，我们假定表冷器翅片材料为铝材，静态接触角$\theta_s$依靠托马斯-杨的润湿理论：
+\begin{equation}
+	\cos\theta_s=\frac{\sigma_{sv}-\sigma_{sl}}{\sigma_{lv}}
+\end{equation}
+其中$\sigma_{sv}$为固-气界面张力，$\sigma_{sl}$为固-液界面张力，$\sigma_{lv}$为液-气界面张力。
+在我们的研究案例中，这个$\theta_s$取$\pi/5$且变化极小，可以认为是常数。
+但当液滴上方存在空气流动时，接触角会发生变化，这时需要用到动态接触角理论，我们
+采用Cox-Voinov模型\footnote{Chan TS, Kamal C, Snoeijer JH, Sprittles JE, Eggers J. Cox–Voinov theory with slip. Journal of Fluid Mechanics. 2020;900:A8. doi:10.1017/jfm.2020.499}
+来描述动态接触角与静态接触角的关系：
+\begin{equation}
+	\theta^{3}=\theta_{s}^{3}+\frac{9 \mu_{air} u}{\sigma} \ln(\frac{L}{L_{m}})
+\end{equation}
+其中$\theta$为动态接触角，$\theta_{s}$为静态接触角，$\mu_{air}$为空气动力粘度，$u$为空气来流速度，$\sigma$为空气与水滴表面的张力系数，$L$为水滴湿润长度，$L_{m}$为分子尺度，一般取10$^{-9}$ m。
+这是我们实际要用到的接触角，它是关于来流速度$u$和半径$R$的函数。
+
+
+
+\subsection{力学平衡关系：水滴的生长、脱落、滑移与破碎}
+首先来考虑水滴的生长$(\mathrm{d}R/\mathrm{d}t)$。根据\ref{eq:dmw}，水滴的体积变化率为：
+\begin{equation}
+	\frac{\mathrm{d}V}{\mathrm{d}t}=\frac{1}{\rho_w}\frac{\mathrm{d}m_w}{\mathrm{d}t}=-\frac{N_w A_p M_w}{\rho_w}
+\end{equation}
+也就是说，对于一个固定的来流速度$u$，水滴生长的速率$\mathrm{d}R/\mathrm{d}t$可以通过下式计算得到：
+\begin{equation}
+	-N_w \pi R^2 \sin^{2}\theta M_w =\rho_w \pi R^{2}(2-3\cos\theta+\cos^{3}\theta) \frac{\mathrm{d}R}{\mathrm{d}t}
+\end{equation}
+简化得：
+\begin{equation}
+	\frac{\mathrm{d}R}{\mathrm{d}t}=-\frac{N_w M_w}{\rho_w (2-3\cos\theta+\cos^{3}\theta)\sin^{2}\theta}
+\end{equation}
+所以水滴的生长速率用一个偏微分方程表示，只与来流速度$u$和半径$R$有关。因为$\theta=\theta(u,R)$。
+
+
+对于贴附在水平上壁面的水滴，其所受重力$F_g$为：
+\begin{equation}
+	F_g=\rho_w g\cdot \frac{1}{3}\pi R^3 (2-3\cos\theta+\cos^{3}\theta)
+\end{equation}
+
+表面张力提供的粘附力$F_{\sigma}$用于抵抗脱落力，
+当水滴所受重力大于粘附力时，水滴脱落。水滴脱落的条件为：
+\begin{equation}
+	F_g > F_{\sigma}
+\end{equation}
+
+
+水滴滑移与气流拖拽力$F_d$有关，当气流拖拽力大于粘附力时，
+水滴开始滑移。根据牛顿的粘附力模型，水滴滑移的临界条件为：
+\begin{equation}
+	F_d > \mu_{air}A_p\frac{\partial u}{\partial y}|_{y=0} \approx \mu_{air} A_p \frac{u}{R_c}
+\end{equation}
+也就是：
+\begin{equation}
+	R\cdot (u\sin\theta)=\frac{2\mu_{air}}{C_d\rho_{air}}
+\end{equation}
+
+
+
+
+
+
+
+
+最后来讨论水滴的破碎。当韦伯数$We$大于临界韦伯数$We_{dro}$时，水滴破碎。
+本文采用 SSD（Stochastic Secondary Droplet）模型模拟液滴在湿通道中的破碎过程。
+在气液两相流动过程中，大液滴在气流的冲击下会破碎成小液滴。SSD 模型允许液滴在
+一定范围内随机破碎。在破碎过程中，小液滴的尺寸具有一定独立性。小液滴的粒径符
+合 Fokker-Planck 分布。区分液滴大小之间的临界尺寸使用下面的公式来计算:
+\begin{equation}
+	r_{dro}=\frac{We_{dro} \cdot \sigma}{\rho_{air} u^{2}}
+\end{equation}
+关于临界韦伯数$We_{dro}$，本文采用源流流动中常出现的经验值10。
+
+大液滴破碎后，小液滴产生，小水滴的直径可以采用下式计算：
+\begin{equation}
+	T(x)=\frac{1}{\sqrt{2\pi\xi^2}}\exp[\frac{-(x-x_0-\xi)^2}{2\xi^2}]
+\end{equation}
+其中x为水滴破碎后产生的小水滴的半径的对数分布形式：
+\begin{equation}
+	x=\ln(r)
+\end{equation}
+$\xi^2$是新生成的水滴的半径方差的一个对数表达形式：
+\begin{equation}
+	\xi^2=-0.1\ln (We/We_{dro})
+\end{equation}
+
+最后我们从\ref{eq:dTw}中提取以翅片表面温度$T_{sur}$为自变量的水滴温度变化率：
+\begin{equation}
+	\frac{\mathrm{d}T_w}{\mathrm{d}t}=\frac{h_c A (T_{a}-T_w)+\pi R_c^2 (T_{sur}-T_w)/r_{sl}-\frac{\mathrm{d} m_w}{\mathrm{d} t} h_{fg}}{m_w C_{p,w}}
+\end{equation}
+上式含自变量$T_{sur},R,u$。
+\subsection{总结}
+考虑时间$t$，由前面的推导可知，水滴的半径$R$似乎是一个隐函数（或偏微分方程）的形式，可以表示为：
+\begin{gather}
+	R=R(u,t)\\
+	\frac{\mathrm{d}R}{\mathrm{d}t}=-\frac{N_w M_w}{\rho_w (2-3\cos\theta+\cos^{3}\theta)\sin^{2}\theta}\\
+	h_m=h_m(u,R(u,t))=h_m(u,t)\\
+	\theta=\theta(u,R(u,t))=\theta(u,t)\\
+	R(u,t=0)=R_0=0.05 mm
+\end{gather}
+
+对于水的温度$T_w$，其也可以表示为一个隐函数的形式，自变量含有$u,t,T_{sur}$，可以表示为：
+\begin{gather}
+	T_w=T_w(u,t,T_{sur},R(u,t))=T_w(u,t,T_{sur})\\
+	\frac{\mathrm{d}T_w}{\mathrm{d}t}=\frac{h_c A (T_{a}-T_w)+\pi R_c^2 (T_{sur}-T_w)/r_{sl}-N_w A_p M_w h_{fg}}{m_w C_{p,w}}\\
+	h_c=h_c(u,R(u,t))=h_c(u,t)\\
+	R(u,t=0)=R_0=0.05 mm\\
+	h_{fg}=h_{fg}(T_w)\\
+	m_w=m_w(R(u,t),\theta(u,t))=m_w(u,t)																																																																																																														
+\end{gather}																																																																																																														
+																																																																																																															
+																																																																																																															
+																																																																																																											
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+																																																																																																															
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}% 结束
