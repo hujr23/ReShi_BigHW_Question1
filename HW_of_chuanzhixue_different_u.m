@@ -177,6 +177,13 @@ for iu = 1:length(u_list)
         'DisplayName', sprintf('u = %.1f m/s', params.u));
 
 end
-figure(figure_R); legend show;
-figure(figure_T); legend show;
-figure(figure_V); legend show;
+figure(figure_R);
+legend('Location','southeast');
+
+figure(figure_T);
+legend('Location','southeast');
+
+figure(figure_V);
+legend('Location','southeast');
+
+
