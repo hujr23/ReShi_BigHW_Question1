@@ -57,7 +57,7 @@ params.T_sur = 12;
 
 
 %% ========= 来流速度参数组 =========
-u_list = [0.5, 0.8, 1.2, 1.6, 2.0];   % m/s
+u_list = 0.8;   % m/s
 
 %% ========= 不同翅片表面温度列表 =========
 Tsur_list = [8, 10, 12, 14, 15];   % ℃
@@ -194,3 +194,4 @@ end
 figure(figure_R_Ts); legend('Location','southeast');
 figure(figure_T_Ts); legend('Location','southeast');
 figure(figure_V_Ts); legend('Location','southeast');
+
