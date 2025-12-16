@@ -99,7 +99,6 @@ title('不同来流速度下水滴温度演化');
 
 
 
-
 %% ========= 不同来流速度下的 ODE 求解 =========
 
 for iu = 1:length(u_list)
@@ -112,24 +111,24 @@ for iu = 1:length(u_list)
         'AbsTol',1e-9, ...
         'MaxStep',1.0 );
 
-    [t, Y] = ode15s(@(t,Y) droplet_ode(t, Y, params), ...
-                    tspan, Y0, options);
+    [t, Y, te, Ye, ie] = ode15s( ...
+    @(t,Y) droplet_ode(t, Y, params), ...
+    tspan, Y0, options);
 
 
  % ======== ★ 就插在这里 ★ ========
-    if ~isempty(ie)
-        switch ie(1)
-            case 1
-                fprintf('u = %.1f m/s：水滴发生滑移，t = %.2f s\n', params.u, te(1));
-            case 2
-                fprintf('u = %.1f m/s：水滴发生脱附，t = %.2f s\n', params.u, te(1));
-            case 3
-                fprintf('u = %.1f m/s：水滴发生破碎，t = %.2f s\n', params.u, te(1));
-        end
-    else
-        fprintf('u = %.1f m/s：时间到达上限，水滴仍处于生长阶段\n', params.u);
+   if ~isempty(ie)
+    switch ie(1)
+        case 1
+            fprintf('u = %.1f m/s：水滴发生滑移，t = %.2f s\n', params.u, te(1));
+        case 2
+            fprintf('u = %.1f m/s：水滴发生脱附，t = %.2f s\n', params.u, te(1));
+        case 3
+            fprintf('u = %.1f m/s：水滴发生破碎，t = %.2f s\n', params.u, te(1));
     end
-
+else
+    fprintf('u = %.1f m/s：到达时间上限，未发生失稳\n', params.u);
+end
 
 
 
@@ -185,5 +184,6 @@ legend('Location','southeast');
 
 figure(figure_V);
 legend('Location','southeast');
+
 
 
