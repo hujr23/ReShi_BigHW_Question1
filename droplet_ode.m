@@ -49,24 +49,34 @@ C_d   = params.C_d;
 
 %% --- 动态接触角（Cox–Voinov 模型） ---
 
+
+
+
+
+% ======== 变量关联物理公式 ========
+
+%% --- 动态接触角（Cox–Voinov 模型） ---
+
 theta_e = pi/5;    % 平衡接触角（弧度）
 Lm = 1e-9;         % 分子尺度长度 (m)
 
 A_cv = 9 * mu_air * u / sigma;
 
-% 固定 sin(theta) = 1/sqrt(2)
-sin_theta_eff = 1/sqrt(2);
+%% ========= 隐函数求接触角 theta =========
 
-theta_cubed = theta_e^3 ...
-    + A_cv * log( (2*pi*R*sin_theta_eff) / Lm );
 
-% 数值保护
-theta_cubed = max(theta_cubed, 1e-6);
+fun_theta = @(th) ...
+    th.^3 ...
+  - theta_e^3 ...
+  - A_cv .* log( (2*pi*R.*max(sin(th),1e-6)) / Lm );
 
-theta = theta_cubed^(1/3);
+% 用平衡接触角作为初值，非常稳
+theta = fzero(fun_theta, theta_e);
+
 
 % 再加一道物理限幅（非常重要）
 theta = max(min(theta, 0.99*pi), 1e-2);
+
 
 
 %% --- 球形帽状水滴的几何关系 ---
@@ -275,3 +285,4 @@ dTwdt = ( Q_aw ...
 % ========= 输出 =========
 dYdt = [dRdt; dTwdt];
 end
+
