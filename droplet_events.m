@@ -19,14 +19,17 @@ theta_e = params.theta_e;
 Lm = 1e-9;
 A_cv = 9 * params.mu_air * params.u / params.sigma;
 
-sin_theta_eff = 1/sqrt(2);
 
-theta_cubed = theta_e^3 ...
-    + A_cv * log( (2*pi*R*sin_theta_eff) / Lm );
 
-theta_cubed = max(theta_cubed, 1e-6);
-theta = theta_cubed^(1/3);
+fun_theta = @(th) ...
+    th.^3 ...
+  - theta_e^3 ...
+  - A_cv .* log( (2*pi*R.*max(sin(th),1e-6)) / Lm );
+
+% 用平衡接触角作为初值，非常稳
+theta = fzero(fun_theta, theta_e);
 theta = max(min(theta, 0.99*pi), 1e-2);
+
 
 
 %% ========= 几何 =========
@@ -70,3 +73,4 @@ isterminal = [1; 1; 1];   % 全部终止
 direction  = [-1; -1; -1];
 
 end
+
